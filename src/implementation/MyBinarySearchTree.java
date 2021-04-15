@@ -7,6 +7,10 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
     //complete this class
     private Node<E> root;
 
+    public Node<E> getRoot() {
+        return root;
+    }
+
     @Override
     public void insert(E data) {
 
