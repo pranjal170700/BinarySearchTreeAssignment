@@ -1,6 +1,5 @@
 package implementation;
 
-import jdk.dynalink.NoSuchDynamicMethodException;
 import myinterface.NodeADT;
 
 public class Node<E extends Comparable<E>> implements NodeADT<E> {
@@ -8,6 +7,12 @@ public class Node<E extends Comparable<E>> implements NodeADT<E> {
     private E data;
     private Node<E> left;
     private Node<E> right;
+
+    public Node(E data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
 
     public E getData() {
         return data;
