@@ -1,7 +1,6 @@
 package implementation;
 
 import myinterface.BinarySearchTreeADT;
-import myinterface.NodeADT;
 
 public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearchTreeADT<E> {
     //complete this class
@@ -62,22 +61,21 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
     }
 
     @Override
-    public void inOrder(NodeADT<E> node) {
+    public void inOrder(Node<E> node) {
+    }
+
+    @Override
+    public void preOrder(Node<E> node) {
 
     }
 
     @Override
-    public void preOrder(NodeADT<E> node) {
+    public void postOrder(Node<E> node) {
 
     }
 
     @Override
-    public void postOrder(NodeADT<E> node) {
-
-    }
-
-    @Override
-    public void reverseInOrder(NodeADT<E> node) {
+    public void reverseInOrder(Node<E> node) {
 
     }
 
@@ -87,7 +85,7 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
     }
 
     @Override
-    public int height(NodeADT<E> node) {
+    public int height(Node<E> node) {
         return 0;
     }
 }

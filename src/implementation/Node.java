@@ -1,8 +1,6 @@
 package implementation;
 
-import myinterface.NodeADT;
-
-public class Node<E extends Comparable<E>> implements NodeADT<E> {
+public class Node<E extends Comparable<E>> {
     //complete node class
     private E data;
     private Node<E> left;
