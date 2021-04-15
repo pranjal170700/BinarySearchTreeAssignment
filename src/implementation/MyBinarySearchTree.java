@@ -83,7 +83,7 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
         if(node != null){
             postOrder(node.getLeft());
             postOrder(node.getRight());
-            System.out.println(node.getData() + ", ");
+            System.out.print(node.getData() + ", ");
         }
     }
 
@@ -91,7 +91,7 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
     public void reverseInOrder(Node<E> node) {
         if(node != null){
             reverseInOrder(node.getRight());
-            System.out.println(node.getData() + ", ");
+            System.out.print(node.getData() + ", ");
             reverseInOrder(node.getLeft());
         }
     }
