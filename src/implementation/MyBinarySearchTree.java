@@ -13,7 +13,17 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
 
     @Override
     public void insert(E data) {
+        Node<E> node = new Node<>(data);
+        if(isEmpty()){
+            root = node;
+        }
+    }
 
+    private boolean isEmpty() {
+        if(root == null){
+            return true;
+        }
+        return false;
     }
 
     @Override
