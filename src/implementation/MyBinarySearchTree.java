@@ -98,7 +98,114 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
 
     @Override
     public void delete(E data) {
+        Node<E> temp = root;
+        Node<E> parent = null;
+        while(temp != null){
+            if(data.compareTo(temp.getData()) == 0){
+                break;
+            }
+            else{
+                parent = temp;
+                if(data.compareTo(temp.getData()) < 0){
+                    temp = temp.getLeft();
+                } else {
+                    temp = temp.getRight();
+                }
+            }
+        }
+        if(temp != null) {
+            // case 1
+            if(isLeaf(temp)){
+                // root node
+                if (parent == null){
+                    root = null;
+                }
+                else{
+                    if(data.compareTo(parent.getData()) < 0){
+                        parent.setLeft(null);
+                    }
+                    else{
+                        parent.setRight(null);
+                    }
+                }
+            }
+            // case 2
+            // left child
+            else if(hasLeftChild(temp)){
+                // root node
+                if(parent == null){
+                    root = root.getLeft();
+                }
+                else{
+                    if(data.compareTo(parent.getData()) < 0){
+                        parent.setLeft(temp.getLeft());
+                    }
+                    else{
+                        parent.setRight(temp.getLeft());
+                    }
+                }
+            }
+            // right child
+            else if(hasRightChild(temp)){
+                // root case
+                if(parent == null){
+                    root = root.getRight();
+                }
+                else{
+                    if(data.compareTo(parent.getData()) < 0){
+                        parent.setLeft(temp.getRight());
+                    }
+                    else {
+                        parent.setRight(temp.getRight());
+                    }
+                }
+            }
+            // case 3
+            else{
+                Node<E> successor = getSuccessor(temp);
+                // delete successor
+                delete(successor.getData());
+                successor.setLeft(temp.getLeft());
+                successor.setRight(temp.getRight());
+                // root case
+                if(parent == null){
+                    root = successor;
+                }
+                else{
+                    if(data.compareTo(parent.getData()) < 0){
+                        parent.setLeft(successor);
+                    }
+                    else{
+                        parent.setRight(successor);
+                    }
+                }
+            }
+        }
+        else{
+            System.out.println("cannot delete");
+        }
+    }
 
+    private boolean hasLeftChild(Node<E> temp) {
+        return temp.getLeft() != null && temp.getRight() == null;
+    }
+
+    private boolean hasRightChild(Node<E> temp) {
+        return temp.getRight() != null && temp.getLeft() == null;
+    }
+
+    private Node<E> getSuccessor(Node<E> temp) {
+        Node<E> response = null;
+        Node<E> tem = temp.getRight();
+        while (tem.getLeft() != null) {
+            tem = tem.getLeft();
+        }
+        response = tem;
+        return response;
+    }
+
+    private boolean isLeaf(Node<E> temp) {
+        return temp.getLeft() == null && temp.getRight() == null;
     }
 
     @Override
